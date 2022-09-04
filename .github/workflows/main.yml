@@ -37,7 +37,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          cd edisubot
+          cd /var/www/edisubot
           git pull --force
           source .venv/bin/activate
           pip install -r requirements.txt -U
