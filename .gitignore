@@ -1,0 +1,11 @@
+.venv
+.env
+.vscode
+
+__pycache__
+
+*.log
+
+gunicorn.conf.py
+app.service
+*.nginx.conf
