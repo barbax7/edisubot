@@ -22,7 +22,12 @@ def snipetts(query: InlineQuery):
     result = list()
 
     for i in snip.keys():
-        result.append(InlineQueryResultArticle(i, i, InputTextMessageContent(snip[i]), description = snip[i]))
+        result.append(InlineQueryResultArticle(
+            id = i,
+            title = i,
+            input_message_content = InputTextMessageContent(snip[i]),
+            description = snip[i]
+        ))
 
     bot.answer_inline_query(query.id, result)
 
