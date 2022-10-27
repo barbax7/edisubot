@@ -20,8 +20,8 @@ def getMessage():
 def snipetts(query: InlineQuery):
     
     result = list()
-
-    for i in snip.keys():
+    
+    for i in sorted(snip):
         result.append(InlineQueryResultArticle(
             id = i,
             title = i,
