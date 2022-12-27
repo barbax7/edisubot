@@ -17,4 +17,4 @@ def info_log(msg, bot, chatid):
 
 def exception(msg, e, bot, chatid):
     logger.exception(msg)
-    bot.send_message(chatid, f"❌ <i>{msg}</i>\n\n<code>{html.escape(e)}</code>")
+    bot.send_message(chatid, f"❌ <i>{msg}</i>\n\n<code>{html.escape('|'.join(e.args))}</code>")

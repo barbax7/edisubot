@@ -1,3 +1,4 @@
+from html import escape
 snip = {
     "Copertura al 100%": 
     """\
@@ -92,51 +93,51 @@ Seconda rata per i primi anni
 20 cfu dopo il 30 novembre: mai e devi restituire la prima
 """,
     "Importi borse di studio":
-    """\
+    f"""\
 <b>Importi borse di studio</b>
 
 <i>Studentз IN SEDE</i>
 <code>
-a. ISEE <= 11813 ----------> € 2705
-b. 11813 < ISEE <= 15749 --> € 2332
-c. 15749 < ISEE <= 23626 --> € 1836
+{escape("a. ISEE <= 11813 ----------> € 2705")}
+{escape("b. 11813 < ISEE <= 15749 --> € 2332")}
+{escape("c. 15749 < ISEE <= 23626 --> € 1836")}
 
 Studentesse corsi STEM
-d. ISEE <= 15749 ----------> € 2829
-e. 15749 < ISEE <= 23626 --> € 2233
+{escape("d. ISEE <= 15749 ----------> € 2829")}
+{escape("e. 15749 < ISEE <= 23626 --> € 2233")}
 </code>
 
 <i>Studentз PENDOLARз</i>
 <code>
-a. ISEE <= 11813 ----------> € 3989
-b. 11813 < ISEE <= 15749 --> € 3449
-c. 15749 < ISEE <= 23626 --> € 2729
+{escape("a. ISEE <= 11813 ----------> € 3989")}
+{escape("b. 11813 < ISEE <= 15749 --> € 3449")}
+{escape("c. 15749 < ISEE <= 23626 --> € 2729")}
 
 Studentesse corsi STEM
-d. ISEE <= 15749 ----------> € 4169
-e. 15749 < ISEE <= 23626 --> € 3305
+{escape("d. ISEE <= 15749 ----------> € 4169")}
+{escape("e. 15749 < ISEE <= 23626 --> € 3305")}
 </code>
 
 <i>Studentз FUORI SEDE</i>
 <code>
-a. ISEE <= 11813 ----------> € 6932
-b. 11813 < ISEE <= 15749 --> € 6008
-c. 15749 < ISEE <= 23626 --> € 4776
+{escape("a. ISEE <= 11813 ----------> € 6932")}
+{escape("b. 11813 < ISEE <= 15749 --> € 6008")}
+{escape("c. 15749 < ISEE <= 23626 --> € 4776")}
 
 Studentesse corsi STEM
-d. ISEE <= 15749 ----------> € 7240
-e. 15749 < ISEE <= 23626 --> € 5761
+{escape("d. ISEE <= 15749 ----------> € 7240")}
+{escape("e. 15749 < ISEE <= 23626 --> € 5761")}
 </code>
 
 <i>Studentз FUORI SEDE, assegnatari di servizio abitativo in residenza EDISU</i>
 <code>
-a. ISEE <= 11813 ----------> € 4232
-b. 11813 < ISEE <= 15749 --> € 3308
-c. 15749 < ISEE <= 23626 --> € 2076
+{escape("a. ISEE <= 11813 ----------> € 4232")}
+{escape("b. 11813 < ISEE <= 15749 --> € 3308")}
+{escape("c. 15749 < ISEE <= 23626 --> € 2076")}
 
 Studentesse corsi STEM
-d. ISEE <= 15749 ----------> € 4540
-e. 15749 < ISEE <= 23626 --> € 3061
+{escape("d. ISEE <= 15749 ----------> € 4540")}
+{escape("e. 15749 < ISEE <= 23626 --> € 3061")}
 </code>
 
 """,
