@@ -6,6 +6,7 @@ from telebot.types import (InlineQuery, InlineQueryResultArticle,
                            InputTextMessageContent, Update)
 
 from edisubot.snippets import snip
+from edisubot.logs import exception
 
 bot = TeleBot(getenv('BOT_TOKEN'), parse_mode = 'HTML')
 
@@ -28,8 +29,14 @@ def snipetts(query: InlineQuery):
             input_message_content = InputTextMessageContent(snip[i], parse_mode = bot.parse_mode),
             description = snip[i]
         ))
-
-    bot.answer_inline_query(query.id, result)
+    try:
+        bot.answer_inline_query(query.id, result)
+    except Exception as ex:
+        exception(
+            "Errore nel fornire le risposte all'utente",
+            ex,
+            bot,
+            getenv('ME'))
 
 
 
