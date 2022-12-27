@@ -25,7 +25,7 @@ def snipetts(query: InlineQuery):
         result.append(InlineQueryResultArticle(
             id = i,
             title = i,
-            input_message_content = InputTextMessageContent(snip[i]),
+            input_message_content = InputTextMessageContent(snip[i], parse_mode = bot.parse_mode),
             description = snip[i]
         ))
 
