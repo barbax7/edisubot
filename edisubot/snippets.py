@@ -107,7 +107,7 @@ Studentesse corsi STEM
 {escape("e. 15749 < ISEE <= 23626 --> € 2233")}
 </code>
 
-<i>Studentз PENDOLARз</i>
+<i>Studentз PENDOLARI</i>
 <code>
 {escape("a. ISEE <= 11813 ----------> € 3989")}
 {escape("b. 11813 < ISEE <= 15749 --> € 3449")}
@@ -129,7 +129,7 @@ Studentesse corsi STEM
 {escape("e. 15749 < ISEE <= 23626 --> € 5761")}
 </code>
 
-<i>Studentз FUORI SEDE, assegnatari di servizio abitativo in residenza EDISU</i>
+<i>Studentз FUORI SEDE, assegnatarз di servizio abitativo in residenza EDISU</i>
 <code>
 {escape("a. ISEE <= 11813 ----------> € 4232")}
 {escape("b. 11813 < ISEE <= 15749 --> € 3308")}
