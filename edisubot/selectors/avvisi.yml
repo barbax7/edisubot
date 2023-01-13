@@ -1,4 +1,4 @@
 testo:
-    css: div.field
+    css: 'div.node-main-content div.field'
     xpath: null
     type: Text
