@@ -3,10 +3,13 @@ from os import getenv
 from flask import Flask, request
 from telebot import TeleBot
 from telebot.types import (InlineQuery, InlineQueryResultArticle,
-                           InputTextMessageContent, Update)
+                           InputTextMessageContent, Update, Message)
+from telebot import custom_filters
 
 from edisubot.snippets import snip
 from edisubot.logs import exception
+from edisubot.avvisi import scrape
+import re
 
 bot = TeleBot(getenv('BOT_TOKEN'), parse_mode = 'HTML')
 
@@ -16,6 +19,14 @@ app = Flask(__name__)
 def getMessage():
     bot.process_new_updates([Update.de_json(request.stream.read().decode("utf-8"))])
     return "!", 200
+
+@bot.channel_post_handler(chat_id = [-1001719176635])
+def sostituisci_link_con_testo(m: Message):
+    
+    url: str = re.search(r'https:\/\/\S+', m.text).group(0)
+    new = re.sub(r"https:\/\/\S+", scrape(url)['testo'], m.text) + f"\n\n<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>"
+
+    bot.edit_message_text(new, m.chat.id, m.id)
 
 @bot.inline_handler(lambda x: True)
 def snipetts(query: InlineQuery):
@@ -39,6 +50,6 @@ def snipetts(query: InlineQuery):
             getenv('ME'))
 
 
-
+bot.add_custom_filter(custom_filters.ChatFilter())
 
 

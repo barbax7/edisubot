@@ -6,3 +6,7 @@ from edisubot.logs import start
 if bot.get_webhook_info().url == '': bot.set_webhook(getenv('WEBHOOK'))
 
 start(bot, getenv('ME'))
+
+if getenv('DEBUG') == 'True':
+    print('Entrato in debug')
+    bot.polling()

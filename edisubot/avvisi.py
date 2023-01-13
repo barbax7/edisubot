@@ -1,9 +1,8 @@
 import requests
 from selectorlib import Extractor
-from edisubot.sql import SQL
 
-def scrape():
-    "Ottieni tutti gli avvisi dal sito"
+def scrape(url: str):
+    "Ottieni il testo dell avviso di cui al link"
 
     HEADERS = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -25,19 +24,12 @@ def scrape():
         'sec-ch-ua-platform': '"Windows"'
     }
 
-    URL = "https://www.edisu.piemonte.it/it/notizie/avvisi"
-
     # Create an Extractor by reading from the YAML file
     e = Extractor.from_yaml_file('edisubot/selectors/avvisi.yml')
 
-    r = requests.get(URL, headers = HEADERS)
+    r = requests.get(url, headers = HEADERS)
 
     # Pass the HTML of the page and create 
     return e.extract(r.text)
-
-def fetch():
-    avvisi = scrape()
-    sql = SQL('avvisi_edisu.db')
-    sql.execute("")
 
     

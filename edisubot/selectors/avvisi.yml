@@ -1,18 +1,4 @@
-avviso:
-    css: div.views-row
+testo:
+    css: div.field
     xpath: null
-    multiple: true
     type: Text
-    children:
-        link:
-            css: a
-            xpath: null
-            type: Link
-        titolo:
-            css: a
-            xpath: null
-            type: Text
-        data:
-            css: 'div.views-field:nth-of-type(3)'
-            xpath: null
-            type: Text
