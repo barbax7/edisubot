@@ -24,7 +24,7 @@ def getMessage():
 def sostituisci_link_con_testo(m: Message):
     
     url: str = re.search(r'https:\/\/\S+', m.text).group(0)
-    new = re.sub(r"https:\/\/\S+", scrape(url)['testo'], m.text) + f"\n\n<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>"
+    new = re.sub(r"https:\/\/\S+", f"<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>", m.html_text)
 
     bot.edit_message_text(new, m.chat.id, m.id)
 
