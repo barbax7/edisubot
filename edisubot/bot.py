@@ -3,8 +3,9 @@ from os import getenv
 from flask import Flask, request
 from telebot import TeleBot
 from telebot.types import (InlineQuery, InlineQueryResultArticle,
-                           InputTextMessageContent, Update, Message)
+                           InputTextMessageContent, Update, Message, InputFile)
 from telebot import custom_filters
+from telebot.util import extract_arguments
 
 from edisubot.snippets import snip
 from edisubot.logs import exception
@@ -37,8 +38,9 @@ def snipetts(query: InlineQuery):
         result.append(InlineQueryResultArticle(
             id = i,
             title = i,
-            input_message_content = InputTextMessageContent(snip[i], parse_mode = bot.parse_mode),
-            description = snip[i]
+            input_message_content = InputTextMessageContent(snip[i]['testo'], parse_mode = bot.parse_mode),
+            description = snip[i]['testo'],
+            reply_markup = snip[i]['markup'] if 'markup' in snip[i].keys() else None
         ))
     try:
         bot.answer_inline_query(query.id, result)
