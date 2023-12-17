@@ -26,7 +26,8 @@ def sostituisci_link_con_testo(m: Message):
     
     url: str = re.search(r'https:\/\/\S+', m.text).group(0)
     new = re.sub(r"https:\/\/\S+", f"<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>", m.html_text)
-
+    instant = "https://a.devs.today/" + url
+    new = "<a href='{}'>‎</a>".format(instant) + new
     bot.edit_message_text(new, m.chat.id, m.id)
 
 @bot.inline_handler(lambda x: True)
