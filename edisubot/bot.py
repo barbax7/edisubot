@@ -1,31 +1,21 @@
 from os import getenv
 
-from flask import Flask, request
 from telebot import TeleBot
 from telebot.types import (InlineQuery, InlineQueryResultArticle,
-                           InputTextMessageContent, Update, Message, InputFile)
+                           InputTextMessageContent, Message)
 from telebot import custom_filters
-from telebot.util import extract_arguments
 
 from edisubot.snippets import snip
 from edisubot.logs import exception
-from edisubot.avvisi import scrape
 import re
 
-bot = TeleBot(getenv('BOT_TOKEN'), parse_mode = 'HTML')
+bot = TeleBot(getenv('BOT_TOKEN'), parse_mode = 'HTML') # type: ignore
 
-app = Flask(__name__)
-
-@app.route("/" + getenv('BOT_TOKEN'), methods = ['POST'])
-def getMessage():
-    bot.process_new_updates([Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!", 200
-
-@bot.channel_post_handler(chat_id = [-1001719176635])
+@bot.channel_post_handler(chat_id = [getenv('CANALE_AVVISI')])
 def sostituisci_link_con_testo(m: Message):
-    
-    url: str = re.search(r'https:\/\/\S+', m.text).group(0)
-    new = re.sub(r"https:\/\/\S+", f"<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>", m.html_text)
+
+    url: str = re.search(r'https:\/\/\S+', m.text).group(0) # type: ignore
+    new = re.sub(r"https:\/\/\S+", f"<a href='{url}'>Leggi l'articolo sul sito EDISU qui.</a>", m.html_text) # type: ignore
     instant = "https://a.devs.today/" + url
     new = "<a href='{}'>‎</a>".format(instant) + new
     bot.edit_message_text(new, m.chat.id, m.id)

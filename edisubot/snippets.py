@@ -1,8 +1,6 @@
 from html import escape
 from telebot.util import quick_markup
 
-BASE_URL = 'https://edisubot.andreabarbagallo.it/screen/'
-
 snip = {
     "Copertura al 100%": 
     {'testo':"""\

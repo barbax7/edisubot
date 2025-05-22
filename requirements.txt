@@ -1,4 +1,1 @@
 pyTelegramBotAPI
-flask
-gunicorn
-selectorlib

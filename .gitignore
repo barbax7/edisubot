@@ -11,3 +11,5 @@ app.service
 *.nginx.conf
 
 /screen/*
+
+docker-compose.yml
